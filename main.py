@@ -6,7 +6,9 @@ from pkg.plugin.events import (
 
 
 # 注册插件
-@register(name="Hello", description="hello world", version="0.1", author="RockChinQ")
+@register(
+    name="Analysing", description="null", version="0.1", author="Constellation39"
+)
 class MyPlugin(BasePlugin):
     # 插件加载时触发
     def __init__(self, host: APIHost):
@@ -24,7 +26,7 @@ class MyPlugin(BasePlugin):
                 msg = (
                     event.text_message
                 )  # 这里的 event 即为 PersonNormalMessageReceived 的对象
-                if msg == " ":  # 如果消息为hello
+                if msg == "hello":  # 如果消息为hello
                     # 输出调试信息
                     self.ap.logger.debug("hello, {}".format(event.sender_id))
 
