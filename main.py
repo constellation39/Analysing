@@ -4,12 +4,11 @@ from pkg.plugin.events import (
     PersonNormalMessageReceived,
 )
 
+# 还没有提供内置持久化库，所以这里先不写
 
 # 注册插件
-@register(
-    name="Analysing", description="null", version="0.1", author="Constellation39"
-)
-class MyPlugin(BasePlugin):
+@register(name="Analysis", description="null", version="0.1", author="Constellation39")
+class AnalysisPlugin(BasePlugin):
     # 插件加载时触发
     def __init__(self, host: APIHost):
         pass
@@ -28,7 +27,7 @@ class MyPlugin(BasePlugin):
                 )  # 这里的 event 即为 PersonNormalMessageReceived 的对象
                 if msg == "hello":  # 如果消息为hello
                     # 输出调试信息
-                    self.ap.logger.debug("hello, {}".format(event.sender_id))
+                    self.ap.logger.info("hello, {}".format(event.sender_id))
 
                     # 回复消息 "hello, <发送者id>!"
                     ctx.add_return("reply", ["hello, {}!".format(event.sender_id)])
